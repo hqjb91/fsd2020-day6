@@ -1,0 +1,42 @@
+<form action="/search" method="GET">
+    <div class="form-group mt-4">
+        <input type="text" class="form-control" name="searchQuery" id="searchQuery" value="{{searchQuery}}" placeholder="Enter your search query." required>
+        <input type="hidden" name="pageNumber" value="1">
+        <div class="d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary mt-4">Submit</button>           
+        </div>
+    </div>
+</form>
+
+<form action="/search" method="GET" style="display:inline">
+    <input type="hidden" name="searchQuery" value="{{searchQuery}}">
+    <input type="hidden" name="pageNumberDown" value="{{pageNumber}}">
+    <button class="btn btn-primary" type="submit">Previous</button>
+</form>
+
+<form action="/search" method="GET" style="display:inline">
+    <input type="hidden" name="searchQuery" value="{{searchQuery}}">
+    <input type="hidden" name="pageNumberUp" value="{{pageNumber}}">
+    <button class="btn btn-primary" type="submit">Next</button>
+</form>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Rating</th>
+                <th>Installs</th>
+            </tr>
+        </thead>
+        <tbody>
+        {{#each records}}
+            <tr>
+                <td>{{this.name}}</td>
+                <td>{{this.category}}</td>
+                <td>{{this.rating}}</td>
+                <td>{{this.installs}}</td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
